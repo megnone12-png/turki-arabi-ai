@@ -27,5 +27,27 @@ p{line-height:2;color:#cbd5e1}
 <select><option>أصوات طبيعية مثل دبلجة المسلسلات</option></select>
 <button onclick="alert('تم اختيار الفيديو، محرك الدبلجة قيد التجهيز')">ابدأ الدبلجة العربية</button>
 </div>
+<section dir="rtl" style="text-align:center; padding:25px; background:#172554; color:white; border-radius:15px; margin:20px;">
+  <h2>🎬 دبلجة المسلسلات التركية</h2>
+  <p>ارفع الحلقة التركية للبدء</p>
+
+  <label for="episode" style="display:block; background:#16a34a; padding:15px; border-radius:10px; cursor:pointer; font-weight:bold;">
+    📁 اختر الحلقة التركية
+  </label>
+
+  <input id="episode" type="file" accept="video/*" style="display:none" onchange="showEpisode(this)">
+
+  <p id="fileName">لم يتم اختيار أي حلقة بعد</p>
+</section>
+
+<script>
+function showEpisode(input) {
+  const file = input.files[0];
+  if (file) {
+    document.getElementById("fileName").textContent =
+      "تم اختيار الحلقة: " + file.name;
+  }
+}
+</script>
 </body>
 </html>
