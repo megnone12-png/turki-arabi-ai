@@ -50,8 +50,8 @@ def dub_video(video):
         source
     ]).decode().strip())
 
-    if duration > 300:
-        raise gr.Error("للتجربة الأولى اختر فيديو لا يتجاوز 5 دقائق")
+    if duration > 600:
+        raise gr.Error("للتجربة الأولى اختر فيديو لا يتجاوز 10 دقائق")
 
     subprocess.run([
         "ffmpeg", "-y", "-i", source,
@@ -71,7 +71,9 @@ def dub_video(video):
         arabic = translator.translate(text)
         voice_file = os.path.join(work, f"voice_{index}.mp3")
 
-        asyncio.run(make_arabic_voice(arabic, voice_file))
+        import nest_asyncio
+nest_asyncio.apply()
+asyncio.get_event_loop().run_until_complete(make_arabic_voice(arabic, voice_file))
 
         speech = AudioSegment.from_file(voice_file)
         original = original.overlay(
