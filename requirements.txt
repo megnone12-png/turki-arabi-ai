@@ -1,0 +1,6 @@
+
+gradio
+faster-whisper
+deep-translator
+edge-tts
+pydub
