@@ -43,7 +43,21 @@ p{line-height:2;color:#cbd5e1}
 </section>
 
 <script>
+function 
 function showEpisode(input) {
+  const file = input.files[0];
+
+  if (file) {
+    document.getElementById("fileName").textContent =
+      "تم اختيار الحلقة: " + file.name;
+
+    const video = document.getElementById("videoPreview");
+    video.src = URL.createObjectURL(file);
+    video.style.display = "block";
+    video.load();
+  }
+}
+(input) {
   const file = input.files[0];
   if (file) {
     document.getElementById("fileName").textContent =
