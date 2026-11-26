@@ -76,6 +76,7 @@ nest_asyncio.apply()
 asyncio.get_event_loop().run_until_complete(make_arabic_voice(arabic, voice_file))
 
         speech = AudioSegment.from_file(voice_file)
+speech = speech[:int((segment.end - segment.start) * 1000)]
         original = original.overlay(
             speech,
             position=int(segment.start * 1000)
